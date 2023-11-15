@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mariadb:
+    container_name: test_mariadb
+    image: mariadb:10.4.11_withBackup
+    build: mariadb
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+      - ./mariadb/my.cnf:/etc/mysql/my.cnf
+    command: --character-set-server=utf8
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=test_mariadb
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=cils92810
