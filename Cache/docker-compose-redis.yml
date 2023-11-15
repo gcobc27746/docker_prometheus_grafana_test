@@ -4,6 +4,7 @@ services:
     container_name: test_redis
     image: redis
     build: ./redis
+    restart: always
     volumes:
       - /var/lib/redis:/data
     ports:
