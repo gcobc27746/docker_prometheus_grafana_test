@@ -6,3 +6,5 @@ services:
     build: ./redis
     volumes:
       - /var/lib/redis:/data
+    ports:
+      - "6379:6379"
