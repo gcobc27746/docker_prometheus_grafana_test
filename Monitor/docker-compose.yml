@@ -13,6 +13,7 @@ services:
     user: "0:0"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus_data:/prometheus
     ports:
       - "9090:9090"
     extra_hosts:
