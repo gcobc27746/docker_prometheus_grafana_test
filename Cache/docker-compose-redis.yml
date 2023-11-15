@@ -9,13 +9,3 @@ services:
       - /var/lib/redis:/data
     ports:
       - "6379:6379"
-
-  redis-exporter:
-    image: oliver006/redis_exporter
-    container_name: redis-exporter
-    hostname: redis-exporter
-    restart: always
-    ports:
-      - "9121:9121"
-    command:
-      - "--redis.addr=redis://redis:6379"

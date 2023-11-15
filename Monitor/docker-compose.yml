@@ -67,3 +67,25 @@ services:
     #   - "8899:8080"
     networks:
       - monitor
+
+  redis-exporter:
+    image: oliver006/redis_exporter
+    container_name: redis-exporter
+    hostname: redis-exporter
+    restart: always
+    # ports:
+    #   - "9121:9121"
+    command: --redis.addr=redis://${REDIS_HOST}:6379
+
+  mysql-exporter-db1:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter-db1
+    hostname: mysql-exporter-db1
+    restart: always
+    command: --config.my-cnf=/cfg/.my.cnf
+    volumes:
+      - ./mysql-exporter/.my.cnf:/cfg/.my.cnf:ro
+    # ports:
+    #   - "9104:9104"
+    environment:
+      DATA_SOURCE_NAME: 'exporter:123456@(${MYSQL_HOST}:3306)'
