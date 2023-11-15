@@ -16,4 +16,4 @@ services:
       - MYSQL_ROOT_PASSWORD=12345678
       - MYSQL_DATABASE=test_mariadb
       - MYSQL_USER=test
-      - MYSQL_PASSWORD=cils92810
+      - MYSQL_PASSWORD=1qaz2wsx
