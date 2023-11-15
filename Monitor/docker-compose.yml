@@ -75,7 +75,8 @@ services:
     restart: always
     # ports:
     #   - "9121:9121"
-    command: --redis.addr=redis://${REDIS_HOST}:6379
+    command: 
+      - "--redis.addr=redis://${REDIS_HOST}:6379"
 
   mysql-exporter-db1:
     image: prom/mysqld-exporter
