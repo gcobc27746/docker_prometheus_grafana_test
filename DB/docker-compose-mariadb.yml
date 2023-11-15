@@ -24,7 +24,7 @@ services:
     hostname: mysql-exporter
     restart: always
     volumes:
-      - ./mariadb/my.cnf:/cfg/.my.cnf:ro
+      - ./mysql-exporter/.my.cnf:/cfg/.my.cnf:ro
     ports:
       - "9104:9104"
     environment:
