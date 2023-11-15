@@ -10,7 +10,7 @@ services:
     container_name: prometheus
     hostname: prometheus
     restart: always
-    user: "$UID:$UID"
+    user: "0:0"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
@@ -80,6 +80,8 @@ services:
     container_name: mysql-exporter
     hostname: mysql-exporter
     restart: always
+    volumes:
+      - ./mysql-exporter/.my.cnf:/cfg/.my.cnf
     # ports:
     #   - "9104:9104"
     environment:
