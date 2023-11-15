@@ -15,6 +15,10 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    extra_hosts:
+      - "prometheus-ip:${PROMETHEUS_HOST}"
+      - "mysql-ip:${MYSQL_HOST}"
+      - "redis-ip:${REDIS_HOST}"
     networks:
       - monitor
 
@@ -62,29 +66,3 @@ services:
     #   - "8899:8080"
     networks:
       - monitor
-
-  redis-exporter:
-    image: oliver006/redis_exporter
-    container_name: redis-exporter
-    hostname: redis-exporter
-    restart: always
-    # ports:
-    #   - "9121:9121"
-    command:
-      - "--redis.addr=redis://${REDIS_HOST}:6379"
-    networks:
-      - monitor
-
-  mysql-exporter:
-    image: prom/mysqld-exporter
-    container_name: mysql-exporter
-    hostname: mysql-exporter
-    restart: always
-    volumes:
-      - ./mysql-exporter/.my.cnf:/cfg/.my.cnf
-    # ports:
-    #   - "9104:9104"
-    environment:
-      DATA_SOURCE_NAME: 'exporter:123456@(${MYSQL_HOST}:3306)'
-    networks:
-      - monitor 

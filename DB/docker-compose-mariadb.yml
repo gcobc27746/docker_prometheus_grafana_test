@@ -17,3 +17,15 @@ services:
       - MYSQL_DATABASE=test_mariadb
       - MYSQL_USER=test
       - MYSQL_PASSWORD=1qaz2wsx
+      
+  mysql-exporter:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter
+    hostname: mysql-exporter
+    restart: always
+    volumes:
+      - ./mariadb/my.cnf:/cfg/.my.cnf:ro
+    ports:
+      - "9104:9104"
+    environment:
+      DATA_SOURCE_NAME: 'exporter:123456@(mariadb:3306)'
