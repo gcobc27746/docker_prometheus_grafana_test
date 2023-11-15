@@ -4,16 +4,16 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-    - targets: ['ip:9090'] //ip为自己服务器IP
+      - targets: ['ip:9090'] #ip为自己服务器IP
   - job_name: 'cadvisor'
     static_configs:
-    - targets: ['cadvisor:8080']
+      - targets: ['cadvisor:8080']
   - job_name: 'node'
     static_configs:
-    - targets: ['node-exporter:9100']
+      - targets: ['node-exporter:9100']
   - job_name: 'redis_exporter'
     static_configs:
-    - targets: ['redis-exporter:9121']
+      - targets: ['redis-exporter:9121']
   - job_name: 'mysql_exporter'
     static_configs:
-    - targets: ['mysql-exporter:9104']
+      - targets: ['mysql-exporter:9104']
